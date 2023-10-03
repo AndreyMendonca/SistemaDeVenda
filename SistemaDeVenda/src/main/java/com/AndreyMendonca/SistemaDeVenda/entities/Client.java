@@ -1,14 +1,19 @@
 package com.AndreyMendonca.SistemaDeVenda.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +31,10 @@ public class Client implements Serializable{
 	private String phone;
 	private String email;
 	private Date birthday;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "client")
+	private List<Sale> sales = new ArrayList<>();
 	
 	public Client() {}
 
@@ -85,6 +94,10 @@ public class Client implements Serializable{
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+	public List<Sale> getSales() {
+		return sales;
 	}
 
 	@Override

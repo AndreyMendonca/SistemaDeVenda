@@ -1,20 +1,37 @@
 package com.AndreyMendonca.SistemaDeVenda.entities;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-public class Sale {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Sale implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Instant date;
+	
+	@ManyToOne
+	private Client client;
 	
 	public Sale() {
 		
 	}
 
-	public Sale(Long id, Instant date) {
+	public Sale(Long id, Instant date, Client client) {
 		super();
 		this.id = id;
 		this.date = date;
+		this.client = client;
 	}
 
 	public Long getId() {
@@ -31,6 +48,14 @@ public class Sale {
 
 	public void setDate(Instant date) {
 		this.date = date;
+	}
+	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	@Override
