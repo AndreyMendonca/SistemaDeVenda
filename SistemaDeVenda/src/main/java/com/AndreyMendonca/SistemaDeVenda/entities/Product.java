@@ -1,11 +1,7 @@
 package com.AndreyMendonca.SistemaDeVenda.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,8 +11,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="tb_category")
-public class Category implements Serializable{
+@Table(name="tb_product")
+public class Product implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -24,18 +21,22 @@ public class Category implements Serializable{
 	private Long id;
 	private String name;
 	private String description;
+	private Double price;
+	private Integer stock;
 	
-	private Set<Product> products = new HashSet<>();
+	private Category category;
 	
-	public Category() {
-		
+	public Product() {
 	}
 
-	public Category(Long id, String name, String description) {
+	public Product(Long id, String name, String description, Double price, Integer stock, Category category) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.price = price;
+		this.stock = stock;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -61,9 +62,29 @@ public class Category implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
 	
-	public Set<Product> getProducts() {
-		return products;
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	@Override
@@ -79,8 +100,10 @@ public class Category implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
 	}
+
+
 	
 }
