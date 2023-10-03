@@ -1,39 +1,34 @@
 package com.AndreyMendonca.SistemaDeVenda.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="tb_sale")
-public class Sale implements Serializable{
-	
+@Table(name="tb_category")
+public class Category implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Instant date;
+	private String name;
+	private String description;
 	
-	@ManyToOne
-	private Client client;
-	
-	public Sale() {
+	public Category() {
 		
 	}
 
-	public Sale(Long id, Instant date, Client client) {
+	public Category(Long id, String name, String description) {
 		super();
 		this.id = id;
-		this.date = date;
-		this.client = client;
+		this.name = name;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -44,20 +39,20 @@ public class Sale implements Serializable{
 		this.id = id;
 	}
 
-	public Instant getDate() {
-		return date;
+	public String getName() {
+		return name;
 	}
 
-	public void setDate(Instant date) {
-		this.date = date;
-	}
-	
-	public Client getClient() {
-		return client;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
@@ -73,7 +68,7 @@ public class Sale implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Sale other = (Sale) obj;
+		Category other = (Category) obj;
 		return Objects.equals(id, other.id);
 	}
 	
