@@ -2,13 +2,16 @@ package com.AndreyMendonca.SistemaDeVenda.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +27,9 @@ public class Sale implements Serializable{
 	
 	@ManyToOne
 	private Client client;
+	
+	@OneToMany(mappedBy = "id.sale")
+	private Set<SaleItem> items = new HashSet<>();
 	
 	public Sale() {
 		
@@ -60,6 +66,10 @@ public class Sale implements Serializable{
 		this.client = client;
 	}
 
+	public Set<SaleItem> getItems(){
+		return items;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

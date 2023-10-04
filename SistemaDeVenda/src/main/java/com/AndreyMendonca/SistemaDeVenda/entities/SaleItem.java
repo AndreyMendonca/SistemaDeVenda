@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.AndreyMendonca.SistemaDeVenda.entities.pk.SaleItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -16,7 +17,7 @@ public class SaleItem implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private SaleItemPK id;
+	private SaleItemPK id = new SaleItemPK();
 	
 	private Integer quantity;
 	private Double price;
@@ -32,6 +33,8 @@ public class SaleItem implements Serializable{
 		this.quantity = quantity;
 		this.price = price;
 	}
+	
+	@JsonIgnore
 	public Sale getSale() {
 		return id.getSale();
 	}
