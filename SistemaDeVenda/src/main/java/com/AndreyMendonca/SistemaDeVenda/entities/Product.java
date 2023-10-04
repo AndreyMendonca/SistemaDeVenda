@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +24,7 @@ public class Product implements Serializable {
 	private Double price;
 	private Integer stock;
 	
+	@ManyToOne
 	private Category category;
 	
 	public Product() {

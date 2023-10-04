@@ -1,4 +1,4 @@
-package com.AndreyMendonca.SistemaDeVenda.models.controllers;
+package com.AndreyMendonca.SistemaDeVenda.controllers;
 
 import java.util.List;
 
@@ -13,20 +13,20 @@ import com.AndreyMendonca.SistemaDeVenda.entities.Client;
 import com.AndreyMendonca.SistemaDeVenda.services.ClientService;
 
 @RestController
-@RequestMapping(value ="/clientes")
-public class ClientController{
-	
+@RequestMapping(value = "/clientes")
+public class ClientController {
+
 	@Autowired
 	private ClientService service;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Client>> findAll(){
+	public ResponseEntity<List<Client>> findAll() {
 		List<Client> clients = service.findAll();
 		return ResponseEntity.ok().body(clients);
 	}
-	
-	@GetMapping(value="/{id}")
-	public ResponseEntity<Client> findById(@PathVariable Long id){
+
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Client> findById(@PathVariable Long id) {
 		Client client = service.findById(id);
 		return ResponseEntity.ok().body(client);
 	}

@@ -1,4 +1,4 @@
-package com.AndreyMendonca.SistemaDeVenda.models.controllers;
+package com.AndreyMendonca.SistemaDeVenda.controllers;
 
 import java.util.List;
 
@@ -13,20 +13,20 @@ import com.AndreyMendonca.SistemaDeVenda.entities.Category;
 import com.AndreyMendonca.SistemaDeVenda.services.CategoryService;
 
 @RestController
-@RequestMapping(value="/categories")
+@RequestMapping(value = "/categories")
 public class CategoryController {
 
 	@Autowired
 	private CategoryService service;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Category>> findAll(){
+	public ResponseEntity<List<Category>> findAll() {
 		List<Category> categories = service.findAll();
 		return ResponseEntity.ok().body(categories);
 	}
-	
-	@GetMapping(value="/{id}")
-	public ResponseEntity<Category> findById(@PathVariable Long id){
+
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Category> findById(@PathVariable Long id) {
 		Category category = service.findById(id);
 		return ResponseEntity.ok().body(category);
 	}
