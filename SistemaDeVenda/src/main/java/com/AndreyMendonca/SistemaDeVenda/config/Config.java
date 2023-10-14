@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.AndreyMendonca.SistemaDeVenda.entities.Category;
 import com.AndreyMendonca.SistemaDeVenda.entities.Client;
-import com.AndreyMendonca.SistemaDeVenda.entities.Payment;
 import com.AndreyMendonca.SistemaDeVenda.entities.Product;
 import com.AndreyMendonca.SistemaDeVenda.entities.Sale;
 import com.AndreyMendonca.SistemaDeVenda.entities.SaleItem;
@@ -73,10 +72,6 @@ public class Config implements CommandLineRunner{
 		
 		saleItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
-		Payment pay = new Payment(null, "Credito");
-		o1.setPayment(pay);
-		
-		saleRepository.save(o1);
 		
 	}
 

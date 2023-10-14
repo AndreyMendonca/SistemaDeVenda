@@ -3,6 +3,8 @@ package com.AndreyMendonca.SistemaDeVenda.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +23,7 @@ public class Payment implements Serializable{
 	private Long id;
 	private String Description;
 	
+	@JsonIgnore
 	@OneToOne
 	@MapsId
 	private Sale sale;
