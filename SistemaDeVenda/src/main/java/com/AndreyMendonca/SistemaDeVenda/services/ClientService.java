@@ -21,4 +21,12 @@ public class ClientService {
 		Optional<Client> client = repository.findById(id);
 		return client.get();
 	}
+	
+	public Client insert(Client client) {
+		return repository.save(client);
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id); 
+	}
 }
