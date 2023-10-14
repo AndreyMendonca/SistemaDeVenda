@@ -13,7 +13,7 @@ import com.AndreyMendonca.SistemaDeVenda.entities.Client;
 import com.AndreyMendonca.SistemaDeVenda.services.ClientService;
 
 @RestController
-@RequestMapping(value = "/clientes")
+@RequestMapping(value = "/clients")
 public class ClientController {
 
 	@Autowired
