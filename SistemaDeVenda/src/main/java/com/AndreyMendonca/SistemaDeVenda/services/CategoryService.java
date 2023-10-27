@@ -24,4 +24,5 @@ public class CategoryService {
 		Optional<Category> category = repository.findById(id);
 		return category.get();
 	}
+	
 }

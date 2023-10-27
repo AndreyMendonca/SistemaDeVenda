@@ -35,11 +35,14 @@ public class ClientService {
 		updateData(entity,obj);
 		return repository.save(entity);
 	}
-	private void updateData(Client entity, Client obj) {
+	public void updateData(Client entity, Client obj) {
 		entity.setName(obj.getName());
 		entity.setCpf(obj.getCpf());
 		entity.setBirthday(obj.getBirthday());
 		entity.setEmail(obj.getEmail());
 		entity.setPhone(obj.getPhone());
+	}
+	public List<Client> findByName(String name){
+		return repository.findByNameContaining(name);
 	}
 }

@@ -57,4 +57,10 @@ public class ClientController {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}
+	
+	@GetMapping(value="/name/{name}")
+	public ResponseEntity<List<Client>> findByName(@PathVariable String name){
+		List<Client> clients = service.findByName(name);
+		return ResponseEntity.ok().body(clients);
+	}
 }
