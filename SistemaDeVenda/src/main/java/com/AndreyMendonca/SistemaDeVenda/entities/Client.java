@@ -1,8 +1,8 @@
 package com.AndreyMendonca.SistemaDeVenda.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,7 +32,8 @@ public class Client implements Serializable{
 	private String phone;
 	private String email;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "GMT")
-	private Instant birthday;
+	private Date birthday;
+	private Boolean active = true;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
@@ -40,7 +41,7 @@ public class Client implements Serializable{
 	
 	public Client() {}
 
-	public Client(Long id, String name, String cpf, String phone, String email, Instant birthday) {
+	public Client(Long id, String name, String cpf, String phone, String email, Date birthday) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -90,12 +91,20 @@ public class Client implements Serializable{
 		this.email = email;
 	}
 
-	public Instant getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Instant birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	public List<Sale> getSales() {
@@ -118,6 +127,5 @@ public class Client implements Serializable{
 		Client other = (Client) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
+		
 }

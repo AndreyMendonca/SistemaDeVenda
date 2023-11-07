@@ -23,6 +23,7 @@ public class ClientService {
 	}
 	
 	public Client insert(Client client) {
+		client.setActive(true);
 		return repository.save(client);
 	}
 	
