@@ -63,4 +63,9 @@ public class ClientController {
 		List<Client> clients = service.findByName(name);
 		return ResponseEntity.ok().body(clients);
 	}
+	
+	@PutMapping(value="/active/{id}")
+	public void updateActive(@PathVariable Long id){
+		service.updateActive(id);
+	}
 }

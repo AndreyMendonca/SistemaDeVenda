@@ -33,7 +33,7 @@ public class Client implements Serializable{
 	private String email;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "GMT")
 	private Date birthday;
-	private Boolean active = true;
+	private Boolean active;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")

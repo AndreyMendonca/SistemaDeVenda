@@ -23,7 +23,9 @@ public class ClientService {
 	}
 	
 	public Client insert(Client client) {
-		client.setActive(true);
+		if(client.getActive() == null) {
+			client.setActive(true);
+		}
 		return repository.save(client);
 	}
 	
@@ -42,8 +44,20 @@ public class ClientService {
 		entity.setBirthday(obj.getBirthday());
 		entity.setEmail(obj.getEmail());
 		entity.setPhone(obj.getPhone());
+		entity.setActive(obj.getActive());
 	}
 	public List<Client> findByName(String name){
 		return repository.findByNameContaining(name);
+	}
+	
+	public Client updateActive(Long id) {
+		Client client = findById(id);
+		if(client.getActive()) {
+			client.setActive(false);
+			System.out.println("deixei falso");
+		}else {
+			client.setActive(true);
+		}
+		return repository.save(client);
 	}
 }

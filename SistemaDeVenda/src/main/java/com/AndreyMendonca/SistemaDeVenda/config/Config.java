@@ -13,6 +13,9 @@ public class Config implements CommandLineRunner{
 	private ClientRepository clientRepository;
 	
 	@Autowired
+	private ClientService service;
+	
+	@Autowired
 	private SaleRepository saleRepository;
 	
 	@Autowired
