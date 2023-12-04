@@ -23,4 +23,11 @@ public class PaymentService {
 		Optional<Payment> payment = repository.findById(id);
 		return payment.get();
 	}
+	
+	public Payment insert(Payment payment) {
+		return repository.save(payment);
+	}
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
 }

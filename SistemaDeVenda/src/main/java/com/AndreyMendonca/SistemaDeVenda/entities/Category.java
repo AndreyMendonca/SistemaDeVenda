@@ -27,6 +27,7 @@ public class Category implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	private Set<Product> products = new HashSet<>();
+	private Boolean active;
 	
 	public Category() {
 		
@@ -65,6 +66,14 @@ public class Category implements Serializable{
 	
 	public Set<Product> getProducts() {
 		return products;
+	}
+	
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 	@Override

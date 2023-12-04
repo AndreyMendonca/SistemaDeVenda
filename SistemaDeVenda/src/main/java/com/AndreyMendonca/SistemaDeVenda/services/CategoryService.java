@@ -25,4 +25,25 @@ public class CategoryService {
 		return category.get();
 	}
 	
+	public Category insert(Category category) {
+		if(category.getActive() == null) {
+			category.setActive(true);
+		}
+		return repository.save(category);
+	}
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public Category updateActive(Long id) {
+		Category category = findById(id);
+		if(category.getActive()) {
+			category.setActive(false);
+			System.out.println("deixei falso");
+		}else {
+			category.setActive(true);
+		}
+		return repository.save(category);
+	}
+	
 }
