@@ -46,4 +46,7 @@ public class CategoryService {
 		return repository.save(category);
 	}
 	
+	public List<Category> findByName(String name){
+		return repository.findByNameContaining(name);
+	}
 }

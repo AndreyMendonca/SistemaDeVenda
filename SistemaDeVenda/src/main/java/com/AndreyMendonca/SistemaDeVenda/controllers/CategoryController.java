@@ -55,4 +55,10 @@ public class CategoryController {
 	public void updateActive(@PathVariable Long id){
 		service.updateActive(id);
 	}
+	
+	@GetMapping(value="/name/{name}")
+	public ResponseEntity<List<Category>> findByName(@PathVariable String name){
+		List<Category> categories = service.findByName(name);
+		return ResponseEntity.ok().body(categories);
+	}
 }

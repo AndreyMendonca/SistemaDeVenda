@@ -24,4 +24,34 @@ public class ProductService {
 		Optional<Product> product = repository.findById(id);
 		return product.get();
 	}
+	public Product insert(Product product) {
+		return repository.save(product);
+	}
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public Product update(Long id, Product product) {
+		Product entity = repository.getReferenceById(id);
+		updateData(entity, product);
+		return repository.save(entity);
+	}
+	public void updateData(Product entity, Product product) {
+		entity.setName(product.getName());
+		entity.setCategory(product.getCategory());
+		entity.setDescription(product.getDescription());
+		entity.setPrice(product.getPrice());
+		entity.setStock(product.getStock());
+		entity.setActive(product.getActive());
+	}
+	public Product updateActive(Long id) {
+		Product product = findById(id);
+		if(product.getActive()) {
+			product.setActive(false);
+			System.out.println("deixei falso");
+		}else {
+			product.setActive(true);
+		}
+		return repository.save(product);
+	}
 }

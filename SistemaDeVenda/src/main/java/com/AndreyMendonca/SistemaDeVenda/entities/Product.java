@@ -23,6 +23,7 @@ public class Product implements Serializable {
 	private String description;
 	private Double price;
 	private Integer stock;
+	private Boolean active;
 	
 	@ManyToOne
 	private Category category;
@@ -87,6 +88,13 @@ public class Product implements Serializable {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
 
 	@Override
 	public int hashCode() {
@@ -104,7 +112,6 @@ public class Product implements Serializable {
 		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
 	}
-
 
 	
 }
